@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isabella & Alejandro - Nuestra Boda</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Lora:ital,wght@0,400;0,500;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SVG Definitions for Ornaments -->
+    <svg style="display: none;">
+        <defs>
+            <symbol id="floral-ornament" viewBox="0 0 100 30">
+                <path d="M50 15 C40 0, 20 0, 0 15 C20 30, 40 30, 50 15 C60 0, 80 0, 100 15 C80 30, 60 30, 50 15 Z"
+                    fill="var(--c-soft-gold)" opacity="0.6" />
+                <circle cx="50" cy="15" r="3" fill="var(--c-soft-gold)" />
+            </symbol>
+            <symbol id="divider-star" viewBox="0 0 24 24">
+                <path d="M12 0 L15 9 L24 12 L15 15 L12 24 L9 15 L0 12 L9 9 Z" fill="var(--c-soft-gold)" />
+            </symbol>
+        </defs>
+    </svg>
+
+    <!-- Envelope Intro Screen -->
+    <div id="envelope-screen" class="envelope-screen">
+        <div class="envelope" id="envelope">
+
+            <!-- Paper sliding out -->
+            <div class="envelope-paper">
+                <svg class="paper-ornament" viewBox="0 0 100 30">
+                    <path d="M50 15 C40 0, 20 0, 0 15 C20 30, 40 30, 50 15 C60 0, 80 0, 100 15 C80 30, 60 30, 50 15 Z"
+                        fill="var(--c-soft-gold)" opacity="0.6" />
+                    <circle cx="50" cy="15" r="3" fill="var(--c-soft-gold)" />
+                </svg>
+                <p class="paper-greeting">Estás cordialmente invitado</p>
+                <h1 class="paper-names">Isabella & Alejandro</h1>
+            </div>
+
+            <!-- Envelope Flaps Cover -->
+            <div class="envelope-front">
+                <div class="flap-left"></div>
+                <div class="flap-right"></div>
+                <div class="flap-bottom"></div>
+            </div>
+
+            <!-- Top Flap -->
+            <div class="envelope-flap-top"></div>
+
+            <!-- Interactive Wax Seal -->
+            <div class="wax-seal" id="wax-seal">
+                <span>I&A</span>
+            </div>
+        </div>
+
+        <p class="instruction-text">Haz clic en el sello para abrir</p>
+    </div>
+
+    <!-- Hero Section with Parallax -->
+    <header class="hero" id="home">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="hero-subtitle reveal-text"><span class="italic-serif">Nos casamos</span></p>
+            <h1 class="hero-title reveal-text-delay">Isabella & Alejandro</h1>
+
+            <div class="hero-separator reveal-text-delay">
+                <div class="line"></div>
+                <svg width="20" height="20">
+                    <use href="#divider-star"></use>
+                </svg>
+                <div class="line"></div>
+            </div>
+
+            <p class="hero-date reveal-text-delay-2">14 de Septiembre de 2026<br><span class="hero-location">Cartagena,
+                    Colombia</span></p>
+            <button id="btn-open-invitation" class="btn-elegant reveal-btn">Abrir invitación</button>
+        </div>
+    </header>
+
+    <!-- Main Content wrapper (hidden until intro passed) -->
+    <main id="main-content" class="hidden">
+
+        <!-- Countdown Section -->
+        <section class="countdown-section section-padding" id="countdown">
+            <div class="container text-center">
+                <div class="lux-icon fade-in"><i class="fa-regular fa-clock"></i></div>
+                <p class="section-subtitle fade-in">Contando los días para decir sí.</p>
+
+                <div class="countdown-container fade-in-slow">
+                    <div class="count-box">
+                        <span id="days">00</span>
+                        <p>Días</p>
+                    </div>
+                    <div class="count-box">
+                        <span id="hours">00</span>
+                        <p>Horas</p>
+                    </div>
+                    <div class="count-box">
+                        <span id="minutes">00</span>
+                        <p>Minutos</p>
+                    </div>
+                    <div class="count-box">
+                        <span id="seconds">00</span>
+                        <p>Segundos</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Separator -->
+        <div class="elegant-separator">
+            <hr class="line-fade fade-in">
+            <svg class="sep-icon fade-in" width="24" height="24">
+                <use href="#divider-star"></use>
+            </svg>
+            <hr class="line-fade right fade-in">
+        </div>
+
+        <!-- Nuestra Historia Section -->
+        <section class="history-section section-padding bg-alt" id="historia">
+            <div class="container">
+                <div class="title-wrapper text-center fade-in">
+                    <span class="sub-heading-italic">El inicio de</span>
+                    <h2 class="section-title">Nuestra Historia</h2>
+                    <svg class="title-ornament" width="80" height="24">
+                        <use href="#floral-ornament"></use>
+                    </svg>
+                </div>
+
+                <div class="timeline">
+
+                    <div class="timeline-item left fade-in-up">
+                        <div class="timeline-image image-hover-lux">
+                            <img src="img/DSCF3388_websize.JPG.jpeg" alt="Cómo nos conocimos">
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Cómo nos conocimos</h3>
+                            <p>Un encuentro casual que cambió nuestras vidas para siempre. Entre risas y miradas
+                                tímidas, supimos que había una conexión especial, única e irrepetible.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right fade-in-up">
+                        <div class="timeline-image image-hover-lux">
+                            <img src="img/DSCF3399_websize.JPG.jpeg" alt="Nuestro primer viaje">
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Nuestro primer viaje</h3>
+                            <p>Descubriendo el mundo juntos. Aquellos días mágicos nos mostraron que éramos el mejor
+                                equipo para cualquier aventura, sin importar el destino.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item left fade-in-up">
+                        <div class="timeline-image image-hover-lux">
+                            <img src="img/DSCF3414_websize.JPG.jpeg" alt="La propuesta">
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">La propuesta</h3>
+                            <p>El atardecer más hermoso y la pregunta más importante de nuestras vidas. Con lágrimas de
+                                felicidad y el corazón lleno de amor genuino, dijimos sí al 'para siempre'.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item right fade-in-up">
+                        <div class="timeline-image image-hover-lux">
+                            <img src="img/DSCF4295_websize.JPG.jpeg" alt="Nuestro comienzo">
+                        </div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Nuestro comienzo</h3>
+                            <p>Hoy estamos aquí, infinitamente emocionados por iniciar este nuevo y hermoso capítulo
+                                rodeados de las personas que más amamos en todo el mundo.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Separator -->
+        <div class="elegant-separator">
+            <hr class="line-fade fade-in">
+            <svg class="sep-icon fade-in" width="24" height="24">
+                <use href="#divider-star"></use>
+            </svg>
+            <hr class="line-fade right fade-in">
+        </div>
+
+        <!-- Detalles del Evento -->
+        <section class="event-details section-padding" id="detalles">
+            <div class="container text-center">
+                <div class="title-wrapper text-center fade-in">
+                    <span class="sub-heading-italic">Acompáñanos en los</span>
+                    <h2 class="section-title">Detalles del Evento</h2>
+                    <svg class="title-ornament" width="80" height="24">
+                        <use href="#floral-ornament"></use>
+                    </svg>
+                </div>
+
+                <div class="cards-grid">
+                    <div class="card hover-lux fade-in-up">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-church card-icon"></i>
+                        </div>
+                        <h3>Ceremonia</h3>
+                        <p class="venue-name">Catedral de Santa Catalina de Alejandría</p>
+                        <p class="venue-loc">Centro Histórico, Cartagena</p>
+                        <div class="gold-line-small"></div>
+                        <p class="card-time">4:00 PM</p>
+                    </div>
+
+                    <div class="card hover-lux fade-in-up" style="transition-delay: 0.1s;">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-champagne-glasses card-icon"></i>
+                        </div>
+                        <h3>Recepción</h3>
+                        <p class="venue-name">Casa de la Marquesa Valdehoyos</p>
+                        <p class="venue-loc">Calle Factoría, Cartagena</p>
+                        <div class="gold-line-small"></div>
+                        <p class="card-time">7:00 PM</p>
+                    </div>
+
+                    <div class="card hover-lux fade-in-up" style="transition-delay: 0.2s;">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-regular fa-calendar-check card-icon"></i>
+                        </div>
+                        <h3>Fecha</h3>
+                        <p class="venue-name">Sábado, 14 de Septiembre</p>
+                        <p class="venue-loc">Año 2026</p>
+                        <div class="gold-line-small"></div>
+                        <p class="card-time">Reservar el día</p>
+                    </div>
+
+                    <div class="card hover-lux fade-in-up" style="transition-delay: 0.3s;">
+                        <div class="card-icon-wrapper">
+                            <i class="fa-solid fa-user-tie card-icon"></i>
+                        </div>
+                        <h3>Código de Vestimenta</h3>
+                        <p class="venue-name">Etiqueta Formal (Black Tie)</p>
+                        <p class="venue-loc">Traje largo para damas<br>Smoking para caballeros</p>
+                        <div class="gold-line-small"></div>
+                        <p class="card-time">Elegancia pura</p>
+                    </div>
+                </div>
+
+                <!-- Mapa -->
+                <div class="map-container fade-in-slow">
+                    <div class="map-overlay-lux"></div>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15655.454477348983!2d-75.56064789851613!3d10.42442226293931!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8ef62f9db1c57e6d%3A0x6bbaafeaaec7dc55!2sCiudad%20Amurallada%20Cartagena!5e0!3m2!1ses-419!2sco!4v1700687595350!5m2!1ses-419!2sco"
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Separator -->
+        <div class="elegant-separator">
+            <hr class="line-fade fade-in">
+            <svg class="sep-icon fade-in" width="24" height="24">
+                <use href="#divider-star"></use>
+            </svg>
+            <hr class="line-fade right fade-in">
+        </div>
+
+        <!-- Cronograma del Día -->
+        <section class="schedule-section section-padding bg-alt" id="cronograma">
+            <div class="container">
+                <div class="title-wrapper text-center fade-in">
+                    <span class="sub-heading-italic">Los momentos de</span>
+                    <h2 class="section-title">El Itinerario</h2>
+                    <svg class="title-ornament" width="80" height="24">
+                        <use href="#floral-ornament"></use>
+                    </svg>
+                </div>
+
+                <div class="schedule-timeline">
+                    <div class="s-item fade-in-left">
+                        <div class="s-time">4:00 PM</div>
+                        <div class="s-dot-lux">
+                            <div class="s-dot-inner"></div>
+                        </div>
+                        <div class="s-desc">
+                            <h4>Ceremonia Religiosa</h4>
+                            <p class="s-detail">Intercambio de votos</p>
+                        </div>
+                    </div>
+                    <div class="s-item fade-in-left" style="transition-delay: 0.1s;">
+                        <div class="s-time">5:00 PM</div>
+                        <div class="s-dot-lux">
+                            <div class="s-dot-inner"></div>
+                        </div>
+                        <div class="s-desc">
+                            <h4>Cóctel y Sesión Fotográfica</h4>
+                            <p class="s-detail">Brindis al atardecer</p>
+                        </div>
+                    </div>
+                    <div class="s-item fade-in-left" style="transition-delay: 0.2s;">
+                        <div class="s-time">7:00 PM</div>
+                        <div class="s-dot-lux">
+                            <div class="s-dot-inner"></div>
+                        </div>
+                        <div class="s-desc">
+                            <h4>Cena de Gala</h4>
+                            <p class="s-detail">Experiencia culinaria exquisita</p>
+                        </div>
+                    </div>
+                    <div class="s-item fade-in-left" style="transition-delay: 0.3s;">
+                        <div class="s-time">9:00 PM</div>
+                        <div class="s-dot-lux">
+                            <div class="s-dot-inner"></div>
+                        </div>
+                        <div class="s-desc">
+                            <h4>Celebración y Fiesta</h4>
+                            <p class="s-detail">Noche para recordar siempre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Galería de Fotos -->
+        <section class="gallery-section section-padding" id="galeria">
+            <div class="container text-center">
+                <div class="title-wrapper text-center fade-in">
+                    <span class="sub-heading-italic">Nuestras mejores</span>
+                    <h2 class="section-title">Memorias en Imágenes</h2>
+                    <svg class="title-ornament" width="80" height="24">
+                        <use href="#floral-ornament"></use>
+                    </svg>
+                </div>
+
+                <div class="gallery-grid">
+                    <div class="g-item fade-in-up" onclick="openLightbox('img/DSCF4331_websize.JPG.jpeg')">
+                        <div class="g-img-wrapper">
+                            <img src="img/DSCF4331_websize.JPG.jpeg" alt="Galería 1">
+                        </div>
+                        <div class="g-overlay">
+                            <div class="g-overlay-content">
+                                <i class="fa-solid fa-plus lux-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-item fade-in-up" style="transition-delay: 0.1s;"
+                        onclick="openLightbox('img/DSCF4350_websize.JPG.jpeg')">
+                        <div class="g-img-wrapper">
+                            <img src="img/DSCF4350_websize.JPG.jpeg" alt="Galería 2">
+                        </div>
+                        <div class="g-overlay">
+                            <div class="g-overlay-content">
+                                <i class="fa-solid fa-plus lux-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-item fade-in-up" style="transition-delay: 0.2s;"
+                        onclick="openLightbox('img/DSCF3340_websize.JPG.jpeg')">
+                        <div class="g-img-wrapper">
+                            <img src="img/DSCF3340_websize.JPG.jpeg" alt="Galería 3">
+                        </div>
+                        <div class="g-overlay">
+                            <div class="g-overlay-content">
+                                <i class="fa-solid fa-plus lux-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="g-item fade-in-up" style="transition-delay: 0.3s;"
+                        onclick="openLightbox('img/DSCF3350_websize.JPG.jpeg')">
+                        <div class="g-img-wrapper">
+                            <img src="img/DSCF3350_websize.JPG.jpeg" alt="Galería 4">
+                        </div>
+                        <div class="g-overlay">
+                            <div class="g-overlay-content">
+                                <i class="fa-solid fa-plus lux-plus"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Elegant Separator -->
+        <div class="elegant-separator">
+            <hr class="line-fade fade-in">
+            <svg class="sep-icon fade-in" width="24" height="24">
+                <use href="#divider-star"></use>
+            </svg>
+            <hr class="line-fade right fade-in">
+        </div>
+
+        <!-- RSVP Section -->
+        <section class="rsvp-section section-padding bg-alt" id="rsvp">
+            <div class="container text-center">
+                <div class="title-wrapper text-center fade-in">
+                    <span class="sub-heading-italic">Por favor confirma tu</span>
+                    <h2 class="section-title">Asistencia</h2>
+                    <svg class="title-ornament" width="80" height="24">
+                        <use href="#floral-ornament"></use>
+                    </svg>
+                </div>
+
+                <p class="fade-in rsvp-sub">Esperamos contar con tu honorable presencia.<br>Te pedimos confirmar antes
+                    del 15 de Agosto.</p>
+
+                <form class="rsvp-form fade-in-up" id="rsvpForm">
+                    <div class="form-grid">
+                        <div class="form-group form-input-lux">
+                            <input type="text" placeholder="Nombre completo" required>
+                            <span class="focus-border"></span>
+                        </div>
+                        <div class="form-group form-input-lux">
+                            <input type="email" placeholder="Correo electrónico" required>
+                            <span class="focus-border"></span>
+                        </div>
+                    </div>
+                    <div class="form-group form-input-lux">
+                        <select required>
+                            <option value="" disabled selected>¿Asistirás a la boda?</option>
+                            <option value="yes">Sí, celebraré con ustedes con alegría</option>
+                            <option value="no">Con tristeza, no podré asistir</option>
+                        </select>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group form-input-lux">
+                        <input type="number" placeholder="Número de acompañantes (si aplica)" min="0" max="5">
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group form-input-lux">
+                        <textarea rows="4" placeholder="Mensaje para los novios (Opcional)"></textarea>
+                        <span class="focus-border"></span>
+                    </div>
+                    <button type="submit" class="btn-elegant w-full">Confirmar Asistencia</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Regalos -->
+        <section class="gifts-section section-padding" id="regalos">
+            <div class="container text-center fade-in-up">
+                <div class="lux-icon-large">
+                    <i class="fa-solid fa-gift gift-icon"></i>
+                </div>
+                <h2 class="section-title">Nuestra Lista de Regalos</h2>
+                <div class="gift-text">
+                    <p class="italic-serif text-gold">Tu presencia es verdaderamente el mejor regalo para nosotros.</p>
+                    <p class="mt-4">Sin embargo, si deseas bendecirnos con un detalle especial, hemos preparado un fondo
+                        de luna de miel que nos ayudará a crear nuevos e inolvidables recuerdos juntos.</p>
+                </div>
+                <button class="btn-elegant-outline fade-in-up" style="transition-delay: 0.2s;">Ver Opciones de
+                    Regalo</button>
+            </div>
+        </section>
+
+        <!-- Final Message (Footer with Parallax) -->
+        <footer class="footer-section text-center">
+            <div class="footer-overlay-gradient"></div>
+            <div class="container padding-large">
+                <h2 class="footer-message fade-in-up">No podemos esperar para celebrar este día tan especial y mágico
+                    contigo.</h2>
+                <div class="footer-separator fade-in-up">
+                    <svg width="20" height="20">
+                        <use href="#divider-star"></use>
+                    </svg>
+                </div>
+                <p class="footer-names fade-in-up">Isabella & Alejandro</p>
+                <p class="footer-date fade-in-up">14 de Septiembre, 2026</p>
+            </div>
+        </footer>
+
+    </main>
+
+    <!-- Lightbox Element -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox" onclick="closeLightbox()">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+    </div>
+
+    <!-- Scripts -->
+    <script src="app.js"></script>
+</body>
+
+</html>

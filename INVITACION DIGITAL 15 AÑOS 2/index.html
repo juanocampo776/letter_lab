@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación 15 Años - Sofía</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/particles.css">
+</head>
+<body>
+    <!-- Magic Particles Overlay -->
+    <div id="particles-container"></div>
+    <div id="butterflies-container"></div>
+    <div id="fireflies-container"></div>
+    <div id="leaves-container"></div>
+
+    <!-- 1. Pantalla de Bienvenida (Hero) -->
+    <section id="hero" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2 class="pre-title">Mis 15 Años</h2>
+            <h1 class="main-title">Sofía</h1>
+            <p class="hero-msg">Un momento mágico que quiero compartir contigo.</p>
+            <button id="open-invitation" class="btn-premium">Abrir invitación</button>
+        </div>
+        <div class="audio-toggle" id="audio-toggle">
+            <i class="fas fa-volume-up"></i>
+        </div>
+    </section>
+
+    <!-- Main Content (Hidden until opened) -->
+    <main id="main-content" class="hidden">
+        
+        <!-- 2. Historia -->
+        <section id="story" class="reveal-section">
+            <div class="container container-flex">
+                <div class="story-image">
+                    <img src="img/2M5A4146_websize.JPG.jpeg" alt="Sofía" class="img-curved">
+                </div>
+                <div class="story-text">
+                    <h2 class="section-title">Mi Historia</h2>
+                    <p>Hoy celebro la magia de la vida, los sueños que comienzan a florecer y el amor de quienes me acompañan. Este jardín encantado es mi sueño hecho realidad.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Contador Regresivo -->
+        <section id="countdown" class="reveal-section bg-gradient">
+            <div class="container">
+                <h2 class="section-title white">Faltan solos...</h2>
+                <div class="countdown-grid">
+                    <div class="timer-box"><span id="days">00</span><small>Días</small></div>
+                    <div class="timer-box"><span id="hours">00</span><small>Horas</small></div>
+                    <div class="timer-box"><span id="minutes">00</span><small>Minutos</small></div>
+                    <div class="timer-box"><span id="seconds">00</span><small>Segundos</small></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Detalles del Evento -->
+        <section id="details" class="reveal-section">
+            <div class="container cards-grid">
+                <div class="detail-card">
+                    <i class="far fa-calendar-alt"></i>
+                    <h3>Fecha</h3>
+                    <p>Sábado, 25 de Octubre 2026</p>
+                </div>
+                <div class="detail-card">
+                    <i class="far fa-clock"></i>
+                    <h3>Hora</h3>
+                    <p>20:00 Horas</p>
+                </div>
+                <div class="detail-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Lugar</h3>
+                    <p>Salón de Eventos "El Jardín Mágico"</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn-small">Ver mapa</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Galería -->
+        <section id="gallery" class="reveal-section">
+            <div class="container">
+                <h2 class="section-title">Momentos Especiales</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item"><img src="img/2M5A4164_websize.JPG.jpeg" alt="Sofía" loading="lazy"></div>
+                    <div class="gallery-item"><img src="img/2M5A4655_websize.JPG.jpeg" alt="Sofía" loading="lazy"></div>
+                    <div class="gallery-item"><img src="img/2M5A4968_websize.JPG.jpeg" alt="Sofía" loading="lazy"></div>
+                    <div class="gallery-item"><img src="img/2M5A5037_websize.JPG.jpeg" alt="Sofía" loading="lazy"></div>
+                    <div class="gallery-item"><img src="img/2M5A5229_websize.JPG.jpeg" alt="Sofía" loading="lazy"></div>
+                    <div class="gallery-item"><img src="img/2M5A5603_websize.JPG.jpeg" alt="Sofía" loading="lazy"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. RSVP -->
+        <section id="rsvp" class="reveal-section bg-soft-lavender">
+            <div class="container rsvp-container">
+                <h2 class="section-title">Confirmar Asistencia</h2>
+                <p>Tu presencia haría esta noche aún más especial.</p>
+                <form id="rsvp-form" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="name">Nombre Completo</label>
+                        <input type="text" id="name" name="name" required placeholder="Tu nombre...">
+                    </div>
+                    <div class="form-group">
+                        <label>¿Asistirás?</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="attending" value="yes" required> Sí, con gusto</label>
+                            <label><input type="radio" name="attending" value="no"> No podré ir</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="guests">Número de Acompañantes</label>
+                        <input type="number" id="guests" name="guests" min="0" max="5" value="0">
+                    </div>
+                    <button type="submit" class="btn-premium">Confirmar asistencia</button>
+                    <div id="rsvp-status" class="hidden"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- 7. Mensaje Final -->
+        <section id="closing" class="reveal-section hero-section-footer">
+            <div class="hero-overlay"></div>
+            <div class="hero-content">
+                <h2 class="final-msg">¡Te espero para celebrar juntos!</h2>
+                <h3 class="signature">Sofía</h3>
+                <img src="img/2M5A5720_websize.JPG.jpeg" alt="Sofía" class="closing-photo">
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <p>Elaborado por LetterLab para Sofía</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/script.js"></script>
+</body>
+</html>

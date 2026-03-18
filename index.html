@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Letter Lab | Invitaciones Digitales</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600;700&family=Great+Vibes&family=Cinzel:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Fondo Mágico (Partículas/Orbes) -->
+    <div class="magic-background">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+        <div class="orb orb-3"></div>
+    </div>
+
+
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero reveal">
+            <div class="hero-content container">
+                <h1 class="split-text">Haz que tu evento sea inolvidable desde el primer clic</h1>
+                <p>No es solo una invitación, es la primera emoción que vivirán tus invitados. Sorpréndelos con una experiencia mágica, elegante y totalmente inmersiva.</p>
+            </div>
+            <!-- Scroll Indicator -->
+            <div class="scroll-indicator">
+                <i class="fa-solid fa-chevron-down bounce"></i>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="features container section-padding">
+            <div class="section-header reveal">
+                <h2>Diseñado para enamorar a tus invitados</h2>
+                <p>Nuestras invitaciones son experiencias interactivas que conectan corazones y facilitan toda la organización.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal" style="transition-delay: 0.1s;">
+                    <div class="icon-wrapper floating-icon"><i class="fa-solid fa-images"></i></div>
+                    <h3>Tus Mejores Momentos</h3>
+                    <p>Una galería interactiva donde tu historia de amor o la emoción de tu evento se cuenta en fotos y videos radiantes.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.2s;">
+                    <div class="icon-wrapper floating-icon"><i class="fa-solid fa-music"></i></div>
+                    <h3>La Banda Sonora de tu Día</h3>
+                    <p>Una melodía se reproduce suavemente de fondo al abrirla, erizando la piel de tus invitados desde el primer segundo.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.3s;">
+                    <div class="icon-wrapper floating-icon"><i class="fa-solid fa-location-dot"></i></div>
+                    <h3>Guiados con Precisión</h3>
+                    <p>Integración mágica con Google Maps para que todos lleguen a su destino sin complicaciones.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.4s;">
+                    <div class="icon-wrapper floating-icon"><i class="fa-solid fa-hourglass-half"></i></div>
+                    <h3>El Reloj del Corazón</h3>
+                    <p>Un reloj en reversa que hace latir más rápido a todos de la emoción a medida que se acerca el gran día.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.5s;">
+                    <div class="icon-wrapper floating-icon"><i class="fa-brands fa-instagram"></i></div>
+                    <h3>Recuerdos Sociales</h3>
+                    <p>Tu propio Hashtag y filtros personalizados de Instagram para que todo quede inmortalizado en redes.</p>
+                </div>
+                <div class="feature-card reveal" style="transition-delay: 0.6s;">
+                    <div class="icon-wrapper floating-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                    <h3>Confirmación sin Estrés</h3>
+                    <p>Un sistema de RSVP digital e inteligente que te da tranquilidad absoluta con tu lista de invitados.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Demo Section -->
+        <section class="demo-section section-padding">
+            <div class="container">
+                <div class="section-header reveal">
+                    <h2>Siente la magia antes de empezar</h2>
+                    <p>Mira un adelanto de cómo latirá el corazón de tus invitados con el temporizador y el formulario interactivo.</p>
+                </div>
+                
+                <div class="demo-container">
+                    <!-- Countdown Demo -->
+                    <div class="countdown-demo card glass-card reveal" style="transition-delay: 0.1s;">
+                        <h3>La cuenta regresiva ha comenzado</h3>
+                        <div class="countdown-timer" id="countdown">
+                            <div class="time-box">
+                                <span class="time-value" id="days">00</span>
+                                <span class="time-label">Días</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-value" id="hours">00</span>
+                                <span class="time-label">Horas</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-value" id="minutes">00</span>
+                                <span class="time-label">Min</span>
+                            </div>
+                            <div class="time-box">
+                                <span class="time-value" id="seconds">00</span>
+                                <span class="time-label">Seg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RSVP Form Demo -->
+                    <div class="rsvp-demo card glass-card reveal" style="transition-delay: 0.3s;">
+                        <h3>Seré testigo de este día</h3>
+                        <form id="rsvp-form" class="rsvp-form">
+                            <div class="form-group">
+                                <label for="name">Tu Nombre Completo</label>
+                                <input type="text" id="name" name="name" required placeholder="Ej. Juan Pérez">
+                            </div>
+                            <div class="form-group">
+                                <label for="attendance">¿Nos acompañarás en nuestro sueño?</label>
+                                <select id="attendance" name="attendance" required>
+                                    <option value="" disabled selected>Elige tu respuesta con el corazón</option>
+                                    <option value="yes">¡Sí, estaré allí celebrando!</option>
+                                    <option value="no">Lamentablemente los acompañaré de corazón</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="guests">¿Vienes acompañado?</label>
+                                <input type="number" id="guests" name="guests" min="0" max="5" value="0">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-magic">Sellar mi confirmación</button>
+                            <p id="form-message" class="form-message"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section class="categories container section-padding">
+            <div class="section-header reveal">
+                <h2>Un diseño para cada instante irrepetible</h2>
+                <p>Elige la esencia que mejor represente la vibración de tu evento.</p>
+            </div>
+            <div class="categories-grid">
+                <!-- Card 1 -->
+                <div class="category-card reveal" style="transition-delay: 0.1s;">
+                    <div class="card-image bg-bodas">
+                        <div class="overlay gradient-overlay"></div>
+                    </div>
+                    <div class="card-content glassmorphism">
+                        <h3>Bodas</h3>
+                        <p>Romanticismo puro, reflejando su amor único. Elegancia de principio a fin.</p>
+                        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                            <a href="WEDDING INVITATION/index.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Demo 1</a>
+                            <a href="WEDDING INVITATION 2/index.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Demo 2</a>
+                            <a href="https://wa.me/1234567890?text=Quiero%20conocer%20la%20magia%20para%20mi%20Boda" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Cotizar</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="category-card reveal" style="transition-delay: 0.2s;">
+                    <div class="card-image bg-15">
+                        <div class="overlay gradient-overlay"></div>
+                    </div>
+                    <div class="card-content glassmorphism">
+                        <h3>15 Años</h3>
+                        <p>Brillo, juventud y una invitación que nadie más en tus clases tendrá igual.</p>
+                        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                            <a href="INVITACION DIGITAL 15 AÑOS/index.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Demo 1</a>
+                            <a href="INVITACION DIGITAL 15 AÑOS 2/index.html" target="_blank" class="btn btn-secondary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Demo 2</a>
+                            <a href="https://wa.me/1234567890?text=Quiero%20conocer%20la%20magia%20para%20mis%2015" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Cotizar</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="category-card reveal" style="transition-delay: 0.3s;">
+                    <div class="card-image bg-baby">
+                        <div class="overlay gradient-overlay"></div>
+                    </div>
+                    <div class="card-content glassmorphism">
+                        <h3>Baby Showers</h3>
+                        <p>La noticia más dulce requiere una bienvenida muy tierna y memorable.</p>
+                        <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+                            <a href="https://wa.me/1234567890?text=Quiero%20conocer%20la%20magia%20para%20mi%20Baby%20Shower" target="_blank" class="btn btn-primary" style="font-size: 0.8rem; padding: 0.5rem 1rem;">Cotizar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer reveal">
+        <div class="container footer-content">
+            <div class="footer-brand">
+                <img src="Logo letter lab .PNG" alt="Letter Lab Logo" class="footer-logo">
+                <p>Creamos emociones digitales inolvidables.</p>
+            </div>
+            <div class="footer-social">
+                <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Letter Lab. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Whatsapp Flotante Mágico -->
+    <a href="https://wa.me/1234567890" class="floating-wa pulse-wa" target="_blank" aria-label="Chat en WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span class="tooltip-wa">¡Creemos magia!</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

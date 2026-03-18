@@ -1,0 +1,171 @@
+/* particles.css */
+
+#particles-container, #butterflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+/* Magic Dust Particle */
+.particle {
+    position: absolute;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, rgba(127, 90, 240, 0) 70%);
+    border-radius: 50%;
+    opacity: 0;
+    pointer-events: none;
+    animation: floatParticle 10s linear infinite;
+}
+
+@keyframes floatParticle {
+    0% {
+        transform: translateY(0) translateX(0) scale(0);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.8;
+        transform: translateY(-20px) translateX(10px) scale(1);
+    }
+    90% {
+        opacity: 0.5;
+    }
+    100% {
+        transform: translateY(-1000px) translateX(-50px) scale(0);
+        opacity: 0;
+    }
+}
+
+/* Magical Butterflies */
+.butterfly {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%237F5AF0"><path d="M485.4 135.2C467.4 100.2 431.5 80 392.2 80c-26.6 0-51.4 9.1-70.9 25.4-19.4-16.2-44.2-25.4-70.9-25.4-39.3 0-75.2 20.2-93.2 55.2C130.6 186.2 135.2 250.7 167 312c12.2 23.6 28.5 45.4 48.7 64.9 14.2 13.7 30 25.8 47.1 36.2 11.2 6.8 22.8 12.6 34.6 17.5 11.8-4.9 23.4-10.7 34.6-17.5 17.1-10.4 32.9-22.5 47.1-36.2 20.2-19.5 36.5-41.2 48.7-64.9 31.8-61.3 36.4-125.8 9.6-176.8zM256 384c-12.7-10.3-24.5-21.7-35.3-34.1-18.4-21-33.1-44.5-43.7-69.8-10.8-25.7-16-52.1-15.5-78.5 .5-26.4 7.2-52 19.8-75.3 11-20.3 27-36.3 45.4-45.3 18.3-9 38.6-13 58.7-11.2l-29.4 314.1z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    animation: flyButterfly 15s linear infinite;
+    z-index: 6;
+    filter: drop-shadow(0 0 5px rgba(127, 90, 240, 0.5));
+}
+
+@keyframes flyButterfly {
+    0% {
+        transform: translate(-100px, 100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.6;
+    }
+    25% {
+        transform: translate(25vw, 75vh) rotate(20deg);
+    }
+    50% {
+        transform: translate(75vw, 50vh) rotate(-20deg);
+    }
+    75% {
+        transform: translate(50vw, 25vh) rotate(10deg);
+    }
+    90% {
+        opacity: 0.6;
+    }
+    100% {
+        transform: translate(110vw, -100px) rotate(0deg);
+        opacity: 0;
+    }
+}
+
+.butterfly::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    background: radial-gradient(circle, rgba(127, 90, 240, 0.2) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* Fireflies */
+#fireflies-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+}
+
+.firefly {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #e2f05a;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #e2f05a, 0 0 20px #e2f05a;
+    pointer-events: none;
+    animation: fireflyMove 15s ease-in-out infinite, fireflyBlink 3s ease-in-out infinite;
+}
+
+@keyframes fireflyMove {
+    0% { transform: translateY(0vw) translateX(0vh); opacity: 0; }
+    10% { opacity: 1; }
+    25% { transform: translateY(-10vh) translateX(10vw); }
+    50% { transform: translateY(-20vh) translateX(-10vw); }
+    75% { transform: translateY(-30vh) translateX(5vw); }
+    90% { opacity: 1; }
+    100% { transform: translateY(-40vh) translateX(-5vw); opacity: 0; }
+}
+
+@keyframes fireflyBlink {
+    0%, 100% { opacity: 0.2; }
+    50% { opacity: 1; }
+}
+
+/* Falling Leaves */
+#leaves-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 4;
+    overflow: hidden;
+}
+
+.leaf {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="%2384cc7e"><path d="M272 96c-78.6 0-145.1 81.5-167.5 119-14.3 23.9-19.1 52.6-13.8 80.2 6.7 34.6 28 64.9 59.5 81.9l-38.3 38.3c-9.4 9.4-9.4 24.6 0 33.9s24.6 9.4 33.9 0l38.3-38.3c17 31.5 47.3 52.8 81.9 59.5 27.6 5.3 56.3 .5 80.2-13.8C383.5 417.1 465 350.6 465 272c0-88.4-71.6-176-193-176z"/></svg>');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.6;
+    animation: fallLeaf linear infinite;
+    filter: drop-shadow(0 0 2px rgba(0,0,0,0.2));
+}
+
+@keyframes fallLeaf {
+    0% {
+        transform: translate(0, -50px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translate(100px, 110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
