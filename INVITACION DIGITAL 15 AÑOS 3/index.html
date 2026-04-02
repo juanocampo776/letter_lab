@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>15 ISABELLA - Bosque Encantado</title>
+    <meta name="description" content="Invitación digital 15 años. Un portal al Claro de la Luna.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Volumetric Fog Layers -->
+    <div class="fogwrapper">
+        <div id="foglayer_01" class="fog-img"></div>
+        <div id="foglayer_02" class="fog-img"></div>
+        <div id="foglayer_03" class="fog-img"></div>
+    </div>
+
+    <!-- Prologue: Fairy Tale Book Cover -->
+    <div id="prologue" class="fullscreen-book">
+        <div class="book-cover" id="book-cover">
+            <!-- 3D Edges to simulate stacked pages and thickness -->
+            <div class="book-pages-right"></div>
+            <div class="book-pages-bottom"></div>
+
+            <div class="cover-content">
+                <h1 class="legend-text">La Leyenda</h1>
+                <p>Dicen las antiguas crónicas que una vez cada 15 años, el bosque revela su secreto más preciado...</p>
+                <div class="tap-to-open">
+                    <p>Toca para abrir</p>
+                    <svg viewBox="0 0 24 24">
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
+                </div>
+            </div>
+        </div>
+        <div id="fairy-dust-burst"></div>
+    </div>
+
+    <!-- The Appearance (Hero) -->
+    <section id="hero" class="section">
+        <div class="hero-content">
+            <div class="crown-icon">
+                <svg viewBox="0 0 100 50" style="width: 100px; height: 50px;">
+                    <path d="M10,40 L90,40 L80,10 L65,30 L50,5 L35,30 L20,10 Z" fill="none" stroke="#D4AF37"
+                        stroke-width="2" />
+                    <circle cx="50" cy="5" r="3" fill="#D4AF37" />
+                </svg>
+            </div>
+            <h2 class="hero-title metallic-text">15<br>ISABELLA</h2>
+            <p class="hero-subtitle">Despierta... Tu capítulo comienza ahora.</p>
+        </div>
+        <div class="scroll-indicator" id="scroll-hint">
+            <svg viewBox="0 0 24 24" style="width: 40px; height: 40px; fill: white; opacity: 0.8;">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+        </div>
+    </section>
+
+    <main>
+        <!-- Chapter 1: The Legend Location -->
+        <section id="location" class="section">
+            <div class="card">
+                <h3 class="countdown-label">LA LEYENDA COMIENZA EN:</h3>
+                <div class="countdown-box" id="timer">
+                    <div class="time-item"><span id="days">00</span><label>DÍAS</label></div>
+                    <div class="time-item"><span id="hours">00</span><label>HRS</label></div>
+                    <div class="time-item"><span id="minutes">00</span><label>MIN</label></div>
+                    <div class="time-item"><span id="seconds">00</span><label>SEG</label></div>
+                </div>
+
+                <h2 class="metallic-text">Capitulo I: El Claro de la Luna</h2>
+                <p>Tu lugar en la leyenda ya ha sido escrito...</p>
+
+                <div class="compass-wrapper">
+                    <img src="img/golden_compass_hd.png" alt="Brújula Mística" class="artifact-img" id="open-map"
+                        style="border-radius: 50%;">
+                </div>
+                <p><strong>Hacienda El Bosque</strong><br>20:00 HRS - Recinto de Magia</p>
+                <a href="https://maps.google.com" target="_blank"
+                    style="color: #6d4c41; text-decoration: underline; font-style: italic;">Ver el camino hacia el
+                    Claro</a>
+            </div>
+        </section>
+
+        <!-- Chapter 2: The Golden Ticket (RSVP) -->
+        <section id="rsvp" class="section">
+            <div class="card">
+                <h2 class="metallic-text">Capitulo II: Sella tu Destino</h2>
+                <p>Solo los que posean la llave cruzarán el umbral.</p>
+
+                <img src="img/mystic_key_icon.png" alt="Llave Mística" class="artifact-img key-icon-premium"
+                    id="rsvp-key-btn" style="mix-blend-mode: multiply;">
+                <p id="rsvp-instruction">Gira la llave para confirmar tu presencia</p>
+
+                <form id="rsvp-form" class="rsvp-form" style="display: none; margin-top: 2rem;">
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="text" name="name" placeholder="Tu Nombre Completo" required
+                            style="background: rgba(255,255,255,0.3); border: 1px solid #6d4c41; padding: 10px;">
+                        <select name="attendance" required
+                            style="background: rgba(255,255,255,0.3); border: 1px solid #6d4c41; padding: 10px;">
+                            <option value="" disabled selected>¿Asistirás?</option>
+                            <option value="yes">Sí, estaré allí</option>
+                            <option value="no">No puedo cruzar el bosque</option>
+                        </select>
+                        <textarea name="message" placeholder="¿Alguna petición especial?"
+                            style="background: rgba(255,255,255,0.3); border: 1px solid #6d4c41; padding: 10px;"></textarea>
+                        <button type="submit" class="btn-gold">Sellar Pergamino</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Hidden Secrets (Easter Egg) -->
+    <div id="tree-shadow"
+        style="position: absolute; bottom: 10px; right: 10px; width: 50px; height: 50px; cursor: pointer; opacity: 0;">
+    </div>
+    <div id="egg-message"
+        style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.95); padding: 2rem; color: #ff3d00; display: none; z-index: 2000; border: 2px solid #ff3d00;">
+        "Cuidado con las manzanas rojas... y con los lobos que bailan."
+    </div>
+
+    <!-- Sound of dry leaves -->
+    <audio id="hojarasca-audio" preload="auto">
+        <source src="https://cdn.freesound.org/previews/140/140742_2028636-lq.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Book Opening Sound -->
+    <audio id="book-open-audio" preload="auto">
+        <source src="https://cdn.freesound.org/previews/511/511417_10123565-lq.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Background Music (Enchanted Forest) -->
+    <audio id="background-audio" loop>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-10.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="fireflies-container"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

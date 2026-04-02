@@ -1,0 +1,607 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Italiana&family=Pirata+One&family=Special+Elite&display=swap');
+
+:root {
+    --deep-emerald: #013220;
+    --dark-violet: #1a0026;
+    --old-gold: #D4AF37;
+    --mist-color: rgba(14, 48, 14, 0.4);
+    --text-primary: #f0f0f0;
+    --parchment-bg: #d4c39c;
+    --foil-shine: linear-gradient(110deg, #D4AF37 40%, #fff 50%, #D4AF37 60%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #000 url('img/dark_forest_bg.png') center/cover no-repeat fixed;
+    color: var(--text-primary);
+    font-family: 'Italiana', serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23cfb53b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle></svg>') 12 12, auto;
+    filter: saturate(1.3) brightness(1.1);
+    /* Enchanted boost */
+}
+
+/* Base sections background - Enchanted Forest */
+.section {
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    background: transparent;
+}
+
+/* Overlay to darken and add vignette */
+.section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle, transparent 65%, rgba(0, 0, 0, 0.4) 100%);
+    z-index: 1;
+}
+
+/* Fixed Fog Layer for High-Density Smoke Effect */
+.fogwrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.fog-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 400%;
+    height: 100%;
+    background: url('img/fog_texture.png') repeat-x;
+    background-size: 25% 100%;
+    mix-blend-mode: screen;
+    /* Removes the black background */
+}
+
+#foglayer_01 {
+    animation: fogmove 70s linear infinite, fogfade 20s ease-in-out infinite alternate;
+    opacity: 0.08;
+    z-index: 10;
+}
+
+#foglayer_02 {
+    animation: fogmove 110s linear reverse infinite;
+    opacity: 0.05;
+    z-index: 6;
+    transform: scale(1.4) translateY(20vh);
+}
+
+#foglayer_03 {
+    animation: fogmove 160s linear infinite;
+    opacity: 0.03;
+    z-index: 25;
+    transform: scale(2) translateY(-10vh);
+}
+
+@keyframes fogmove {
+    from {
+        transform: translate3d(0, 0, 0);
+    }
+
+    to {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+@keyframes fogfade {
+    0% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.7;
+    }
+}
+
+.fullscreen-book {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    perspective: 2000px;
+    /* Deep perspective for the 3D open effect */
+    background: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 2s ease 1s;
+    /* Fades out after book opens */
+}
+
+.book-cover {
+    position: relative;
+    width: 85vw;
+    max-width: 900px;
+    height: 85vh;
+    max-height: 1200px;
+    background: linear-gradient(rgba(40, 20, 10, 0.8), rgba(20, 10, 5, 0.9)), url('img/parchment_texture_hd.png') center/cover;
+    border-right: 15px solid #1a0f05;
+    border-radius: 5px 15px 15px 5px;
+    /* Cover slightly curved on the right */
+    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9), 30px 0 50px rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: left center;
+    transition: transform 2.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+    z-index: 105;
+    transform-style: preserve-3d;
+    /* Required for the 3D edges */
+}
+
+/* Simulated stacked pages on the right edge */
+.book-pages-right {
+    position: absolute;
+    top: 2%;
+    /* Slightly smaller than cover to simulate inset pages */
+    right: -40px;
+    /* Extends right */
+    width: 40px;
+    /* Thickness of the book */
+    height: 96%;
+    background: repeating-linear-gradient(to bottom, #d4c4a8 0px, #e8ddc5 2px, #bda37e 4px);
+    transform-origin: left center;
+    transform: rotateY(90deg);
+    border-radius: 0 5px 5px 0;
+    box-shadow: inset -10px 0 20px rgba(0, 0, 0, 0.8);
+}
+
+/* Simulated stacked pages on the bottom edge */
+.book-pages-bottom {
+    position: absolute;
+    bottom: -40px;
+    /* Extends downward */
+    left: 2%;
+    width: 96%;
+    height: 40px;
+    /* Thickness matches right edge */
+    background: repeating-linear-gradient(to right, #d4c4a8 0px, #e8ddc5 2px, #bda37e 4px);
+    transform-origin: top center;
+    transform: rotateX(-90deg);
+    border-radius: 0 0 5px 5px;
+    box-shadow: inset 0 -10px 20px rgba(0, 0, 0, 0.8);
+}
+
+.book-cover::before {
+    /* Golden binding trim */
+    content: '';
+    position: absolute;
+    top: 2%;
+    left: 2%;
+    bottom: 2%;
+    right: 2%;
+    border: 3px double rgba(212, 175, 55, 0.5);
+    pointer-events: none;
+    transform: translateZ(1px);
+    /* Keep above cover */
+}
+
+.book-cover.open {
+    transform: rotateY(-110deg);
+}
+
+.cover-content {
+    text-align: center;
+    padding: 3rem;
+    max-width: 800px;
+}
+
+.cover-content h1 {
+    font-size: 5rem;
+    color: #D4AF37;
+    font-family: 'Cinzel', serif;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    margin-bottom: 2rem;
+}
+
+.cover-content p {
+    font-size: 1.8rem;
+    color: #e0d0b5;
+    line-height: 1.6;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.tap-to-open {
+    margin-top: 4rem;
+    cursor: pointer;
+    animation: tap-pulse 2s infinite;
+}
+
+.tap-to-open p {
+    font-size: 1.2rem;
+    color: #D4AF37;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.tap-to-open svg {
+    width: 30px;
+    fill: #D4AF37;
+}
+
+@keyframes tap-pulse {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: translateY(0);
+    }
+
+    50% {
+        opacity: 1;
+        transform: translateY(10px);
+    }
+}
+
+/* Fairy Dust Burst */
+#fairy-dust-burst {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    z-index: 102;
+}
+
+.dust-particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px #D4AF37, 0 0 20px 5px #00ff88;
+    opacity: 0;
+}
+
+@keyframes dust-explosion {
+    0% {
+        transform: translate(0, 0) scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--tx), var(--ty)) scale(0);
+        opacity: 0;
+    }
+}
+
+/* --- Hero Section Specific --- */
+#hero {
+    position: relative;
+    background: none;
+    /* Let the forest/girl composite show in a child layer */
+}
+
+#hero::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent), url('img/2M5A4655_websize.JPG.jpeg') center/cover no-repeat;
+    z-index: 1;
+    filter: brightness(1.2) saturate(1.3);
+    /* High quality pop */
+}
+
+#hero.active::after {
+    filter: brightness(1.35) saturate(1.4);
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.metallic-text {
+    font-family: 'Cinzel', serif;
+    background: var(--foil-shine);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shine 5s linear infinite;
+    text-transform: uppercase;
+    filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+}
+
+@keyframes shine {
+    0% {
+        background-position: 100% 0;
+    }
+
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.hero-title {
+    font-size: 7.5rem;
+    /* Massive size */
+    line-height: 0.85;
+    letter-spacing: 12px;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 60px rgba(212, 175, 55, 0.9), 0 0 20px rgba(255, 255, 255, 0.5);
+    /* Powerful glow */
+    font-weight: 700;
+}
+
+/* --- Premium Parchment Card --- */
+.card {
+    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('img/parchment_texture_hd.png') center/cover no-repeat;
+    background-color: var(--parchment-bg);
+    padding: 4rem;
+    border-radius: 5px;
+    max-width: 850px;
+    width: 90%;
+    position: relative;
+    z-index: 15;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(0, 0, 0, 0.5);
+    border: 3px double rgba(139, 107, 74, 0.6);
+    /* Double border for premium look */
+    color: #271b12;
+    text-align: center;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.card h2 {
+    font-size: 2.2rem;
+    margin-bottom: 2rem;
+    color: #271b12;
+    /* Darker */
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    font-weight: 700;
+}
+
+.card p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    color: #1a1510;
+    /* Near black for contrast */
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    font-weight: bold;
+}
+
+/* --- Artifacts --- */
+.artifact-img {
+    width: 160px;
+    height: 160px;
+    object-fit: cover;
+    margin: 1rem auto;
+    border-radius: 50%;
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
+    transition: transform 0.3s;
+    animation: compass-vibrate 4s infinite ease-in-out;
+}
+
+@keyframes compass-vibrate {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: scale(1.02) rotate(-3deg);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: scale(1.05) rotate(3deg);
+    }
+}
+
+.artifact-img:hover {
+    transform: scale(1.2);
+    animation-play-state: paused;
+}
+
+.key-icon-premium {
+    width: 140px;
+    height: auto;
+    cursor: pointer;
+    transition: transform 2s ease-in-out;
+    /* Even slower, more cinematic */
+    animation: bounce-slow 3s infinite ease-in-out;
+}
+
+.key-unlocking {
+    transform: rotate(90deg) scale(0.95) !important;
+    animation: gem-flash-stay 3s forwards !important;
+    /* Elegant 3-second cycle */
+    pointer-events: none;
+}
+
+@keyframes gem-flash-stay {
+    0% {
+        filter: brightness(1) drop-shadow(0 0 5px #00ff88);
+    }
+
+    40% {
+        filter: brightness(3) drop-shadow(0 0 70px #00ff88);
+    }
+
+    /* Slow build-up flash */
+    100% {
+        filter: brightness(1.6) drop-shadow(0 0 30px #00ff88);
+    }
+
+    /* Settles into a strong glow */
+}
+
+@keyframes bounce-slow {
+
+    0%,
+    100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(2deg);
+    }
+}
+
+
+/* --- Countdown --- */
+.countdown-box {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.time-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.time-item span {
+    font-family: 'Cinzel', serif;
+    font-size: 2.5rem;
+    color: #1a1510;
+    font-weight: bold;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+}
+
+.time-item label {
+    font-size: 0.8rem;
+    color: #4a3620;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    font-weight: bold;
+}
+
+/* --- Button --- */
+.btn-gold {
+    background: linear-gradient(to bottom, #D4AF37, #B8860B);
+    border: 2px solid #8B4513;
+    padding: 1rem 3rem;
+    color: #fff;
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 2rem;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+}
+
+.btn-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    background: linear-gradient(to bottom, #E5C35E, #D4AF37);
+}
+
+/* Scroll Indication */
+.scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: bounce 2s infinite;
+    z-index: 10;
+    cursor: pointer;
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        bottom: 2.5rem;
+    }
+
+    50% {
+        bottom: 1.5rem;
+    }
+}
+
+/* Fireflies */
+.firefly {
+    position: fixed;
+    width: 4px;
+    height: 4px;
+    background: #ffffbb;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffffbb;
+    pointer-events: none;
+    z-index: 8;
+    opacity: 0;
+}
+
+@keyframes fly-fire {
+    0% {
+        transform: translate(0, 0);
+        opacity: 0;
+    }
+
+    20% {
+        opacity: 1;
+    }
+
+    80% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate(var(--x), var(--y));
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 5px;
+    }
+
+    .card {
+        padding: 2rem;
+    }
+
+    .countdown-box {
+        gap: 0.5rem;
+    }
+
+    .time-item span {
+        font-size: 1.5rem;
+    }
+}
