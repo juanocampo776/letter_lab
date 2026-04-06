@@ -39,16 +39,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const tx = Math.cos(angle) * distance + 'px';
             const ty = Math.sin(angle) * distance + 'px';
 
-            particle.style.setProperty('--tx', tx);
-            particle.style.setProperty('--ty', ty);
-
-            // Alternate colors between gold, green, and white
-            const colors = ['#D4AF37', '#00ff88', '#ffffff', '#ffffbb'];
+            const colors = ['#D4AF37', '#8A9B6E', '#F2F4EE', '#C1CBB6'];
             const color = colors[Math.floor(Math.random() * colors.length)];
             particle.style.background = color;
-            particle.style.boxShadow = `0 0 10px 2px ${color}, 0 0 20px 5px ${color}`;
+            particle.style.boxShadow = `0 0 10px 2px ${color}, 0 0 20px 5px ${color}40`;
 
-            particle.style.animation = `dust-explosion ${Math.random() * 1.5 + 0.8}s cubic-bezier(0.25, 1, 0.5, 1) forwards`;
+            particle.style.animation = `dust-explosion ${Math.random() * 1.5 + 1.0}s cubic-bezier(0.25, 1, 0.5, 1) forwards`;
             dustContainer.appendChild(particle);
         }
 
@@ -57,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 prologue.style.display = 'none';
                 hero.classList.add('active');
-                // Start fairy tale animations after book opens
                 createAllFairyAnimations();
             }, 2000);
         }, 1500);
@@ -152,8 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 2. Fireflies Generation (Enhanced)
-    const fireflyCount = 35;
+    const fireflyCount = 40;
     const ffContainer = document.getElementById('fireflies-container');
     for (let i = 0; i < fireflyCount; i++) {
         const firefly = document.createElement('div');
@@ -161,17 +155,17 @@ document.addEventListener('DOMContentLoaded', () => {
         firefly.style.left = Math.random() * 100 + 'vw';
         firefly.style.top = Math.random() * 100 + 'vh';
 
-        const animationTime = Math.random() * 10 + 10;
-        firefly.style.setProperty('--x', (Math.random() * 200 - 100) + 'px');
-        firefly.style.setProperty('--y', (Math.random() * 200 - 100) + 'px');
+        const animationTime = Math.random() * 12 + 12;
+        firefly.style.setProperty('--x', (Math.random() * 250 - 125) + 'px');
+        firefly.style.setProperty('--y', (Math.random() * 250 - 125) + 'px');
         firefly.style.animation = `fly-fire ${animationTime}s infinite alternate`;
-        firefly.style.animationDelay = Math.random() * 5 + 's';
+        firefly.style.animationDelay = Math.random() * 6 + 's';
 
-        // Vary firefly colors (warm golden to green)
-        const colors = ['#ffffbb', '#D4AF37', '#aaffcc', '#ffddaa'];
+        // vary colors: gold-cream, soft-olive, warm-gold
+        const colors = ['#F2F4EE', '#D4AF37', '#C1CBB6', '#B8960C'];
         const color = colors[Math.floor(Math.random() * colors.length)];
         firefly.style.background = color;
-        firefly.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}40`;
+        firefly.style.boxShadow = `0 0 10px ${color}, 0 0 20px ${color}30`;
 
         ffContainer.appendChild(firefly);
     }
@@ -316,14 +310,14 @@ document.addEventListener('DOMContentLoaded', () => {
         trail.style.position = 'fixed';
         trail.style.left = e.clientX + 'px';
         trail.style.top = e.clientY + 'px';
-        trail.style.width = '4px';
-        trail.style.height = '4px';
-        trail.style.background = '#D4AF37';
+        trail.style.width = '3px';
+        trail.style.height = '3px';
+        trail.style.background = '#F2F4EE';
         trail.style.borderRadius = '50%';
         trail.style.pointerEvents = 'none';
         trail.style.zIndex = '9999';
-        trail.style.boxShadow = '0 0 6px #D4AF37, 0 0 12px #00ff88';
-        trail.style.transition = 'all 0.8s ease-out';
+        trail.style.boxShadow = '0 0 6px #F2F4EE, 0 0 12px #D4AF37';
+        trail.style.transition = 'all 1.0s ease-out';
         document.body.appendChild(trail);
 
         requestAnimationFrame(() => {
