@@ -1,12 +1,14 @@
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Italiana&family=Pirata+One&family=Special+Elite&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Italiana&family=Great+Vibes&family=Special+Elite&display=swap');
 
 :root {
     --deep-emerald: #013220;
     --dark-violet: #1a0026;
     --old-gold: #D4AF37;
+    --fairy-green: #00ff88;
     --mist-color: rgba(14, 48, 14, 0.4);
     --text-primary: #f0f0f0;
-    --parchment-bg: #d4c39c;
+    --glass-bg: rgba(0, 20, 10, 0.55);
+    --glass-border: rgba(212, 175, 55, 0.3);
     --foil-shine: linear-gradient(110deg, #D4AF37 40%, #fff 50%, #D4AF37 60%);
 }
 
@@ -17,19 +19,199 @@
 }
 
 body {
-    background: #000 url('img/dark_forest_bg.png') center/cover no-repeat fixed;
+    background: #000 url('img/enchanted_forest_bg.png') center/cover no-repeat fixed;
     color: var(--text-primary);
     font-family: 'Italiana', serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
     cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23cfb53b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle></svg>') 12 12, auto;
-    filter: saturate(1.3) brightness(1.1);
-    /* Enchanted boost */
 }
 
-/* Base sections background - Enchanted Forest */
+/* ==================== FAIRY TALE ANIMATIONS ==================== */
+
+/* Floating Magic Sparkles */
+.sparkle {
+    position: fixed;
+    width: 6px;
+    height: 6px;
+    background: radial-gradient(circle, #fff 0%, #D4AF37 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9;
+    opacity: 0;
+    animation: sparkle-float var(--duration) var(--delay) infinite ease-in-out;
+}
+
+@keyframes sparkle-float {
+    0% {
+        opacity: 0;
+        transform: translateY(0) scale(0);
+    }
+
+    10% {
+        opacity: 1;
+        transform: translateY(-20px) scale(1);
+    }
+
+    50% {
+        opacity: 0.8;
+        transform: translateY(-80px) scale(1.2);
+    }
+
+    90% {
+        opacity: 0.3;
+        transform: translateY(-150px) scale(0.5);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translateY(-180px) scale(0);
+    }
+}
+
+/* Floating Butterflies → Magical Glowing Orbs */
+.butterfly {
+    position: fixed;
+    pointer-events: none;
+    z-index: 12;
+    opacity: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.9), rgba(0, 255, 136, 0.4), transparent);
+    box-shadow: 0 0 12px 4px rgba(212, 175, 55, 0.5), 0 0 25px 8px rgba(0, 255, 136, 0.2);
+    animation: butterfly-fly var(--fly-duration) var(--fly-delay) infinite ease-in-out;
+}
+
+@keyframes butterfly-fly {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) rotate(0deg) scale(0.5);
+    }
+
+    10% {
+        opacity: 0.9;
+        transform: translate(20px, -30px) rotate(10deg) scale(1);
+    }
+
+    25% {
+        transform: translate(-40px, -80px) rotate(-15deg) scale(1.1);
+    }
+
+    50% {
+        opacity: 0.7;
+        transform: translate(60px, -160px) rotate(20deg) scale(0.9);
+    }
+
+    75% {
+        transform: translate(-30px, -240px) rotate(-10deg) scale(1);
+    }
+
+    90% {
+        opacity: 0.4;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(40px, -320px) rotate(15deg) scale(0.3);
+    }
+}
+
+/* Falling Enchanted Particles → Glowing Golden Petals */
+.fairy-leaf {
+    position: fixed;
+    pointer-events: none;
+    z-index: 7;
+    opacity: 0;
+    width: 6px;
+    height: 6px;
+    border-radius: 50% 0 50% 0;
+    background: radial-gradient(circle, rgba(212, 175, 55, 0.8), rgba(255, 223, 130, 0.3));
+    box-shadow: 0 0 8px 3px rgba(212, 175, 55, 0.4), 0 0 16px 6px rgba(0, 255, 136, 0.15);
+    animation: leaf-fall var(--leaf-duration) var(--leaf-delay) infinite linear;
+}
+
+@keyframes leaf-fall {
+    0% {
+        opacity: 0;
+        transform: translate(0, -20px) rotate(0deg);
+    }
+
+    10% {
+        opacity: 0.8;
+    }
+
+    50% {
+        opacity: 0.6;
+        transform: translate(var(--leaf-x), 50vh) rotate(180deg);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(calc(var(--leaf-x) * -0.5), 110vh) rotate(360deg);
+    }
+}
+
+/* Magic Dust Trail on sections */
+.magic-dust {
+    position: absolute;
+    width: 3px;
+    height: 3px;
+    background: #D4AF37;
+    border-radius: 50%;
+    box-shadow: 0 0 6px 2px rgba(212, 175, 55, 0.6), 0 0 15px 4px rgba(0, 255, 136, 0.3);
+    pointer-events: none;
+    z-index: 20;
+    opacity: 0;
+    animation: magic-twinkle var(--twinkle-dur) var(--twinkle-del) infinite;
+}
+
+@keyframes magic-twinkle {
+
+    0%,
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: scale(1.5);
+    }
+
+    70% {
+        opacity: 0.5;
+        transform: scale(0.8);
+    }
+}
+
+/* Enchanted Glow Pulse on whole page */
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(ellipse at 50% 100%, rgba(0, 255, 136, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 3;
+    animation: forest-glow 8s infinite alternate ease-in-out;
+}
+
+@keyframes forest-glow {
+    0% {
+        opacity: 0.3;
+    }
+
+    100% {
+        opacity: 0.8;
+    }
+}
+
+/* ==================== BASE SECTIONS ==================== */
 .section {
-    height: 100vh;
+    min-height: 100vh;
     width: 100vw;
     scroll-snap-align: start;
     position: relative;
@@ -42,7 +224,7 @@ body {
     background: transparent;
 }
 
-/* Overlay to darken and add vignette */
+/* Vignette overlay */
 .section::before {
     content: '';
     position: absolute;
@@ -50,11 +232,11 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: radial-gradient(circle, transparent 65%, rgba(0, 0, 0, 0.4) 100%);
+    background: radial-gradient(circle, transparent 55%, rgba(0, 0, 0, 0.5) 100%);
     z-index: 1;
 }
 
-/* Fixed Fog Layer for High-Density Smoke Effect */
+/* ==================== VOLUMETRIC FOG ==================== */
 .fogwrapper {
     position: fixed;
     top: 0;
@@ -75,25 +257,24 @@ body {
     background: url('img/fog_texture.png') repeat-x;
     background-size: 25% 100%;
     mix-blend-mode: screen;
-    /* Removes the black background */
 }
 
 #foglayer_01 {
     animation: fogmove 70s linear infinite, fogfade 20s ease-in-out infinite alternate;
-    opacity: 0.08;
+    opacity: 0.03;
     z-index: 10;
 }
 
 #foglayer_02 {
     animation: fogmove 110s linear reverse infinite;
-    opacity: 0.05;
+    opacity: 0.02;
     z-index: 6;
     transform: scale(1.4) translateY(20vh);
 }
 
 #foglayer_03 {
     animation: fogmove 160s linear infinite;
-    opacity: 0.03;
+    opacity: 0.015;
     z-index: 25;
     transform: scale(2) translateY(-10vh);
 }
@@ -110,14 +291,15 @@ body {
 
 @keyframes fogfade {
     0% {
-        opacity: 0.3;
+        opacity: 0.02;
     }
 
     100% {
-        opacity: 0.7;
+        opacity: 0.05;
     }
 }
 
+/* ==================== FAIRY TALE BOOK PROLOGUE ==================== */
 .fullscreen-book {
     position: fixed;
     top: 0;
@@ -126,13 +308,11 @@ body {
     height: 100vh;
     z-index: 100;
     perspective: 2000px;
-    /* Deep perspective for the 3D open effect */
     background: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: opacity 2s ease 1s;
-    /* Fades out after book opens */
 }
 
 .book-cover {
@@ -141,11 +321,13 @@ body {
     max-width: 900px;
     height: 85vh;
     max-height: 1200px;
-    background: linear-gradient(rgba(40, 20, 10, 0.8), rgba(20, 10, 5, 0.9)), url('img/parchment_texture_hd.png') center/cover;
-    border-right: 15px solid #1a0f05;
+    background: linear-gradient(135deg, rgba(5, 30, 15, 0.92), rgba(0, 15, 5, 0.95));
+    border-right: 15px solid rgba(10, 40, 20, 0.9);
     border-radius: 5px 15px 15px 5px;
-    /* Cover slightly curved on the right */
-    box-shadow: inset 0 0 150px rgba(0, 0, 0, 0.9), 30px 0 50px rgba(0, 0, 0, 0.8);
+    box-shadow:
+        inset 0 0 150px rgba(0, 0, 0, 0.9),
+        30px 0 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 80px rgba(0, 255, 136, 0.05);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -153,20 +335,16 @@ body {
     transition: transform 2.5s cubic-bezier(0.645, 0.045, 0.355, 1);
     z-index: 105;
     transform-style: preserve-3d;
-    /* Required for the 3D edges */
 }
 
 /* Simulated stacked pages on the right edge */
 .book-pages-right {
     position: absolute;
     top: 2%;
-    /* Slightly smaller than cover to simulate inset pages */
     right: -40px;
-    /* Extends right */
     width: 40px;
-    /* Thickness of the book */
     height: 96%;
-    background: repeating-linear-gradient(to bottom, #d4c4a8 0px, #e8ddc5 2px, #bda37e 4px);
+    background: repeating-linear-gradient(to bottom, #1a3d2a 0px, #0d2618 2px, #153322 4px);
     transform-origin: left center;
     transform: rotateY(90deg);
     border-radius: 0 5px 5px 0;
@@ -177,12 +355,10 @@ body {
 .book-pages-bottom {
     position: absolute;
     bottom: -40px;
-    /* Extends downward */
     left: 2%;
     width: 96%;
     height: 40px;
-    /* Thickness matches right edge */
-    background: repeating-linear-gradient(to right, #d4c4a8 0px, #e8ddc5 2px, #bda37e 4px);
+    background: repeating-linear-gradient(to right, #1a3d2a 0px, #0d2618 2px, #153322 4px);
     transform-origin: top center;
     transform: rotateX(-90deg);
     border-radius: 0 0 5px 5px;
@@ -190,17 +366,37 @@ body {
 }
 
 .book-cover::before {
-    /* Golden binding trim */
     content: '';
     position: absolute;
     top: 2%;
     left: 2%;
     bottom: 2%;
     right: 2%;
-    border: 3px double rgba(212, 175, 55, 0.5);
+    border: 3px double rgba(212, 175, 55, 0.4);
     pointer-events: none;
     transform: translateZ(1px);
-    /* Keep above cover */
+}
+
+/* Vine decorations on book */
+.book-cover::after {
+    content: '🌿';
+    position: absolute;
+    top: 8%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    opacity: 0.7;
+    animation: sway 4s ease-in-out infinite alternate;
+}
+
+@keyframes sway {
+    0% {
+        transform: translateX(-50%) rotate(-5deg);
+    }
+
+    100% {
+        transform: translateX(-50%) rotate(5deg);
+    }
 }
 
 .book-cover.open {
@@ -214,18 +410,29 @@ body {
 }
 
 .cover-content h1 {
-    font-size: 5rem;
+    font-size: 4.5rem;
     color: #D4AF37;
-    font-family: 'Cinzel', serif;
-    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+    font-family: 'Great Vibes', cursive;
+    text-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 60px rgba(0, 255, 136, 0.2);
     margin-bottom: 2rem;
+    animation: title-glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes title-glow {
+    0% {
+        text-shadow: 0 0 20px rgba(212, 175, 55, 0.4), 0 0 40px rgba(0, 255, 136, 0.1);
+    }
+
+    100% {
+        text-shadow: 0 0 40px rgba(212, 175, 55, 0.8), 0 0 80px rgba(0, 255, 136, 0.3);
+    }
 }
 
 .cover-content p {
-    font-size: 1.8rem;
-    color: #e0d0b5;
-    line-height: 1.6;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    font-size: 1.6rem;
+    color: #c8e6c9;
+    line-height: 1.7;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
 }
 
 .tap-to-open {
@@ -294,11 +501,10 @@ body {
     }
 }
 
-/* --- Hero Section Specific --- */
+/* ==================== HERO SECTION ==================== */
 #hero {
     position: relative;
     background: none;
-    /* Let the forest/girl composite show in a child layer */
 }
 
 #hero::after {
@@ -308,14 +514,27 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.1), transparent), url('img/2M5A4655_websize.JPG.jpeg') center/cover no-repeat;
+    background:
+        linear-gradient(to bottom, rgba(0, 10, 5, 0.3), transparent 30%),
+        linear-gradient(to top, rgba(0, 10, 5, 0.4), transparent 30%),
+        url('img/2M5A4655_websize.JPG.jpeg') center/cover no-repeat;
     z-index: 1;
-    filter: brightness(1.2) saturate(1.3);
-    /* High quality pop */
+    filter: brightness(1.1) saturate(1.3);
 }
 
 #hero.active::after {
-    filter: brightness(1.35) saturate(1.4);
+    filter: brightness(1.3) saturate(1.4);
+    animation: hero-reveal 2s ease-out forwards;
+}
+
+@keyframes hero-reveal {
+    0% {
+        filter: brightness(0.5) saturate(0.5) blur(5px);
+    }
+
+    100% {
+        filter: brightness(1.3) saturate(1.4) blur(0);
+    }
 }
 
 .hero-content {
@@ -348,61 +567,166 @@ body {
 
 .hero-title {
     font-size: 7.5rem;
-    /* Massive size */
     line-height: 0.85;
     letter-spacing: 12px;
     margin-bottom: 2rem;
     text-shadow: 0 0 60px rgba(212, 175, 55, 0.9), 0 0 20px rgba(255, 255, 255, 0.5);
-    /* Powerful glow */
     font-weight: 700;
 }
 
-/* --- Premium Parchment Card --- */
+.hero-subtitle {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.8rem;
+    color: #c8e6c9;
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.9), 0 0 40px rgba(0, 255, 136, 0.3);
+}
+
+.crown-icon {
+    animation: crown-float 4s ease-in-out infinite alternate;
+}
+
+@keyframes crown-float {
+    0% {
+        transform: translateY(0) scale(1);
+    }
+
+    100% {
+        transform: translateY(-10px) scale(1.05);
+    }
+}
+
+/* ==================== GLASSMORPHISM ENCHANTED CARDS ==================== */
 .card {
-    background: linear-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.4)), url('img/parchment_texture_hd.png') center/cover no-repeat;
-    background-color: var(--parchment-bg);
-    padding: 4rem;
-    border-radius: 5px;
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 3.5rem;
+    border-radius: 20px;
     max-width: 850px;
     width: 90%;
     position: relative;
     z-index: 15;
-    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.8), inset 0 0 100px rgba(0, 0, 0, 0.5);
-    border: 3px double rgba(139, 107, 74, 0.6);
-    /* Double border for premium look */
-    color: #271b12;
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.6),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1),
+        0 0 40px rgba(0, 255, 136, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-primary);
     text-align: center;
     transform-style: preserve-3d;
     perspective: 1000px;
+    overflow: hidden;
+    animation: card-entrance 1s ease-out;
+}
+
+/* Enchanted glow border animation */
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    border-radius: 22px;
+    background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.3), transparent, rgba(0, 255, 136, 0.2), transparent);
+    background-size: 400% 400%;
+    z-index: -1;
+    animation: border-shimmer 6s ease-in-out infinite;
+}
+
+@keyframes border-shimmer {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes card-entrance {
+    0% {
+        opacity: 0;
+        transform: translateY(40px) scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Decorative vine corners */
+.card::after {
+    content: '✦';
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.2rem;
+    color: rgba(212, 175, 55, 0.4);
+    animation: twinkle-star 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle-star {
+    0% {
+        opacity: 0.3;
+        transform: scale(0.8) rotate(0deg);
+    }
+
+    100% {
+        opacity: 0.8;
+        transform: scale(1.2) rotate(180deg);
+    }
 }
 
 .card h2 {
     font-size: 2.2rem;
     margin-bottom: 2rem;
-    color: #271b12;
-    /* Darker */
-    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+    color: #D4AF37;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
     font-weight: 700;
+}
+
+.card h3 {
+    color: #c8e6c9;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
 .card p {
     font-size: 1.25rem;
-    line-height: 1.6;
+    line-height: 1.7;
     margin-bottom: 1.5rem;
-    color: #1a1510;
-    /* Near black for contrast */
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
-    font-weight: bold;
+    color: #e0e0e0;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
-/* --- Artifacts --- */
+.card a {
+    color: #D4AF37 !important;
+    text-decoration: none !important;
+    font-style: italic;
+    transition: all 0.3s;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+    padding-bottom: 2px;
+}
+
+.card a:hover {
+    color: #00ff88 !important;
+    border-bottom-color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+}
+
+/* ==================== ARTIFACTS ==================== */
 .artifact-img {
     width: 160px;
     height: 160px;
     object-fit: cover;
     margin: 1rem auto;
     border-radius: 50%;
-    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6);
+    box-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 60px rgba(0, 255, 136, 0.2);
     filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.5));
     transition: transform 0.3s;
     animation: compass-vibrate 4s infinite ease-in-out;
@@ -434,6 +758,7 @@ body {
 .artifact-img:hover {
     transform: scale(1.2);
     animation-play-state: paused;
+    box-shadow: 0 0 50px rgba(212, 175, 55, 0.8), 0 0 80px rgba(0, 255, 136, 0.4);
 }
 
 .key-icon-premium {
@@ -441,14 +766,12 @@ body {
     height: auto;
     cursor: pointer;
     transition: transform 2s ease-in-out;
-    /* Even slower, more cinematic */
     animation: bounce-slow 3s infinite ease-in-out;
 }
 
 .key-unlocking {
     transform: rotate(90deg) scale(0.95) !important;
     animation: gem-flash-stay 3s forwards !important;
-    /* Elegant 3-second cycle */
     pointer-events: none;
 }
 
@@ -461,12 +784,9 @@ body {
         filter: brightness(3) drop-shadow(0 0 70px #00ff88);
     }
 
-    /* Slow build-up flash */
     100% {
         filter: brightness(1.6) drop-shadow(0 0 30px #00ff88);
     }
-
-    /* Settles into a strong glow */
 }
 
 @keyframes bounce-slow {
@@ -481,8 +801,14 @@ body {
     }
 }
 
+/* ==================== COUNTDOWN ==================== */
+.countdown-label {
+    font-family: 'Great Vibes', cursive;
+    font-size: 1.6rem;
+    color: #c8e6c9;
+    margin-bottom: 0.5rem;
+}
 
-/* --- Countdown --- */
 .countdown-box {
     display: flex;
     justify-content: center;
@@ -493,45 +819,112 @@ body {
 .time-item {
     display: flex;
     flex-direction: column;
+    background: rgba(0, 255, 136, 0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 12px;
+    padding: 0.8rem 1.2rem;
+    min-width: 65px;
+    backdrop-filter: blur(10px);
 }
 
 .time-item span {
     font-family: 'Cinzel', serif;
     font-size: 2.5rem;
-    color: #1a1510;
+    color: #D4AF37;
     font-weight: bold;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
 }
 
 .time-item label {
-    font-size: 0.8rem;
-    color: #4a3620;
+    font-size: 0.75rem;
+    color: #a0d5b0;
     letter-spacing: 2px;
-    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 5px rgba(0, 255, 136, 0.3);
     font-weight: bold;
+    margin-top: 4px;
 }
 
-/* --- Button --- */
+/* ==================== RSVP FORM ==================== */
+.rsvp-form input,
+.rsvp-form select,
+.rsvp-form textarea {
+    background: rgba(0, 30, 15, 0.6) !important;
+    border: 1px solid rgba(212, 175, 55, 0.3) !important;
+    padding: 12px 16px !important;
+    color: #f0f0f0 !important;
+    border-radius: 10px !important;
+    font-family: 'Italiana', serif;
+    font-size: 1rem;
+    transition: all 0.3s;
+    backdrop-filter: blur(10px);
+}
+
+.rsvp-form input::placeholder,
+.rsvp-form textarea::placeholder {
+    color: rgba(200, 230, 201, 0.5);
+}
+
+.rsvp-form input:focus,
+.rsvp-form select:focus,
+.rsvp-form textarea:focus {
+    outline: none;
+    border-color: #D4AF37 !important;
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+.rsvp-form select option {
+    background: #0a1f10;
+    color: #f0f0f0;
+}
+
+/* ==================== BUTTON ==================== */
 .btn-gold {
-    background: linear-gradient(to bottom, #D4AF37, #B8860B);
-    border: 2px solid #8B4513;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.9), rgba(184, 134, 11, 0.9));
+    border: 1px solid rgba(212, 175, 55, 0.5);
     padding: 1rem 3rem;
     color: #fff;
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
     cursor: pointer;
     margin-top: 2rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s;
+    border-radius: 50px;
+    box-shadow: 0 5px 25px rgba(212, 175, 55, 0.3), 0 0 40px rgba(0, 255, 136, 0.1);
+    transition: all 0.4s ease;
+    letter-spacing: 2px;
+    font-size: 0.9rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-gold::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(transparent, rgba(255, 255, 255, 0.1), transparent);
+    transform: rotate(45deg);
+    animation: btn-sheen 4s infinite;
+}
+
+@keyframes btn-sheen {
+    0% {
+        transform: translateX(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) rotate(45deg);
+    }
 }
 
 .btn-gold:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
-    background: linear-gradient(to bottom, #E5C35E, #D4AF37);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.5), 0 0 60px rgba(0, 255, 136, 0.2);
+    background: linear-gradient(135deg, rgba(229, 195, 94, 0.95), rgba(212, 175, 55, 0.95));
 }
 
-/* Scroll Indication */
+/* ==================== SCROLL INDICATOR ==================== */
 .scroll-indicator {
     position: absolute;
     bottom: 2rem;
@@ -554,14 +947,14 @@ body {
     }
 }
 
-/* Fireflies */
+/* ==================== FIREFLIES ==================== */
 .firefly {
     position: fixed;
     width: 4px;
     height: 4px;
     background: #ffffbb;
     border-radius: 50%;
-    box-shadow: 0 0 10px #ffffbb;
+    box-shadow: 0 0 10px #ffffbb, 0 0 20px rgba(255, 255, 187, 0.3);
     pointer-events: none;
     z-index: 8;
     opacity: 0;
@@ -587,21 +980,86 @@ body {
     }
 }
 
+/* ==================== FADE IN ANIMATION ==================== */
+.fade-in-up {
+    animation: fadeInUp 1s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== RESPONSIVE ==================== */
 @media (max-width: 768px) {
     .hero-title {
-        font-size: 3rem;
+        font-size: 3.5rem;
         letter-spacing: 5px;
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
     }
 
     .card {
         padding: 2rem;
+        border-radius: 16px;
     }
 
     .countdown-box {
         gap: 0.5rem;
     }
 
+    .time-item {
+        padding: 0.5rem 0.8rem;
+        min-width: 55px;
+    }
+
     .time-item span {
         font-size: 1.5rem;
+    }
+
+    .cover-content h1 {
+        font-size: 3rem;
+    }
+
+    .cover-content p {
+        font-size: 1.2rem;
+    }
+
+    .card h2 {
+        font-size: 1.6rem;
+    }
+
+    .card p {
+        font-size: 1.05rem;
+    }
+
+    .btn-gold {
+        padding: 0.8rem 2rem;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2.8rem;
+        letter-spacing: 3px;
+    }
+
+    .card {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .time-item span {
+        font-size: 1.2rem;
     }
 }
